@@ -1,0 +1,17 @@
+﻿version: "3"
+services:
+    web:
+        build: .
+        ports:
+            - "8080:80"
+        depends_on:
+            - DESKTOP-RQ984F6
+    DESKTOP-RQ984F6:
+        image: "mcr.microsoft.com/mssql/server:2019-CU4-ubuntu-16.04"
+        container_name: 172.18.86.81
+        environment:
+            SA_PASSWORD: "Toochukwu@77"
+            ACCEPT_EULA: "Y"
+            MSSQL_PID: Express
+        ports:
+            - "1443:1445"
