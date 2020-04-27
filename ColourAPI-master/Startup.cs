@@ -24,18 +24,18 @@ namespace ColourAPI
 
         public IConfiguration Configuration { get; }
 
-        
+
         public void ConfigureServices(IServiceCollection services)
         {
-            var connectionString = "server=172.18.86.81,1445; Database = ColourApi;User ID=SA;Password=Toochukwu@77;MultipleActiveResultSets=true";
-            services.AddDbContext<ColourContext>(options => options.UseSqlServer(connectionString)); 
+            var connectionString = "server=sqlserver,1433;Database=ColourApi;User ID=SA;Password=Toochukwu@77;MultipleActiveResultSets=true";
+            services.AddDbContext<ColourContext>(options => options.UseSqlServer(connectionString));
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
-        
+
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-            
+
             app.UseMvc();
             PrepDB.PrepPopulation(app);
         }
